@@ -1,0 +1,105 @@
+.voice-control-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.voice-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: width 0.3s ease-in-out;
+  border-radius: 50px;
+  border: 2px solid #ddd;
+  background-color: #E0E3E8;
+  overflow: hidden;
+  width: 50px;
+  padding: 5px; /* Add padding to ensure space around the icon */
+}
+
+.voice-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Ensure the button is above the animation bars */
+}
+
+.voice-icon-wrapper.expanded {
+  width: 100px; /* Width when expanded */
+}
+
+.voice-animation-wrapper {
+  position: absolute;
+  left: 0; /* Position it correctly within the expanded width */
+  top: 0;
+  display: flex;
+  align-items: center;
+  transition: width 0.3s ease-in-out;
+  height: 100%;
+  z-index: 0; /* Ensure it is behind the button */
+  padding-left: 10px; /* Add padding to the left of the bars */
+  overflow: hidden; /* Hide bars extending beyond the container */
+  width: calc(100% - 50px); /* Ensure bars take up the space until the icon */
+}
+
+.voice-animation-wrapper {
+  width: calc(100% - 50px);
+}
+
+.voice-animation-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+
+}
+
+.voice-animation-bar {
+  width: 3px;
+  background: #47474A;
+  margin: 0 1px;
+  animation: pulse 0.7s infinite;
+}
+
+@keyframes pulse {
+  0% { height: 20px; }
+  20% { height: 13px; }
+  25% { height: 15px; }
+  30% { height: 20px; }
+  35% { height: 15px; }
+  40% { height: 25px; }
+  50% { height: 35px; }
+  75% { height: 30px; }
+  100% { height: 40px; }
+}
+
+@media (max-width: 600px) {
+  .voice-icon-wrapper {
+      width: 40px; /* Adjust width for smaller screens */
+  }
+
+  .voice-icon-wrapper.expanded {
+      width: 100px; /* Adjust expanded width for smaller screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .voice-icon-wrapper {
+      width: 30px; /* Further adjust width for even smaller screens */
+  }
+
+  .voice-icon-wrapper.expanded {
+      width: 80px; /* Further adjust expanded width for even smaller screens */
+  }
+
+  .voice-animation-bar {
+      width: 2px; /* Adjust bar width for smaller screens */
+  }
+}
